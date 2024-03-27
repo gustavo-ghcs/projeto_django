@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados da Enquete</title>
+</head>
+
+<body>
+<h1>{{ question.question_text }}</h1>
+
+<ul>
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'portfolio:vote' question.id %}">Votar denovo?</a>
+<a href="{% url 'portfolio:index' %}">Voltar para a página inicial</a>  
+</body>
+
+</html>
